@@ -1,0 +1,11 @@
+1)
+
+curl --request POST --url "https://kpi.eu.auth0.com/oauth/token" --header "content-type: application/x-www-form-urlencoded" --data "audience=https://kpi.eu.auth0.com/api/v2&grant_type=client_credentials&client_id=JIvCO5c2IBHlAe2patn6l6q5H35qxti0&client_secret=ZRF8Op0tWM36p1_hxXTU-B0K_Gq_-eAVtlrQpY24CasYiDmcXBhNS6IJMNcz1EgB"
+
+2)
+
+curl --request POST --url "https://dev-mmsteknhslqo8dt1.us.auth0.com/oauth/token" --header "content-type: application/x-www-form-urlencoded" --data "audience=https://dev-mmsteknhslqo8dt1.us.auth0.com/api/v2/&grant_type=client_credentials&client_id=QjSRtaNSJs19lXwVRPo1r0ETsyeDzj0l&client_secret=8TWSlkdznY4D5aqK4b8BXUtSUH3J_MkSnYwWZmvmCEc8tsMxnVj_POxBlH-bEAgO"
+
+3) 
+
+curl -L --url "https://dev-mmsteknhslqo8dt1.us.auth0.com/api/v2/users" -H "Content-type: application/json" -H "Accept: application/json" -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlFMUUVJWGhkN0FaWlVoaGtNQ2xNYiJ9.eyJpc3MiOiJodHRwczovL2Rldi1tbXN0ZWtuaHNscW84ZHQxLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJRalNSdGFOU0pzMTlsWHdWUlBvMXIwRVRzeWVEemowbEBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9kZXYtbW1zdGVrbmhzbHFvOGR0MS51cy5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTcwNDY1MjI3OSwiZXhwIjoxNzA0NzM4Njc5LCJhenAiOiJRalNSdGFOU0pzMTlsWHdWUlBvMXIwRVRzeWVEemowbCIsInNjb3BlIjoiY3JlYXRlOnVzZXJzIHJlYWQ6Y2xpZW50X2NyZWRlbnRpYWxzIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.SNNsKolseY4RUCQwleq2ltOyahJBhAzTTto0idQR9nX2ReFfSfv0ppszcK4MbZoy_rxL7I2Yn8-KNhYG4sEYgtBGDvtMACPPQko5NSY6R1-TdceR4_Pg5-mvQrZ7XFQCRUxeLsQp3iHVKFp6udrQVFSKF8jwJ4DHwx_V6Ns79nqz0lqnibGkLVJjyxoqR6clLxKx2SbTYiHnyPwRTT_pDYH_4UHI3mh5_5OXDZSJC8fX5hKPGBR7lNyhNv0S0snok5ZV76jAuDmLBTHRynbpoLoYxqee8CLewrLh83EuXxNHoGSfrsFVpmF8_NbChNTiaYtD1mpH3FsDVkb3tuAelw" -d "{\"email\": \"lesha3320@gmail.com\", \"password\": \"QwErtY123%2\", \"connection\": \"Username-Password-Authentication\"}"
