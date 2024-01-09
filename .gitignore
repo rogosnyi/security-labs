@@ -106,4 +106,4 @@ dist
 
 sessions.json\
 .env
-private_key.pem
+app_key.pem

@@ -13,11 +13,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", verifyToken, (req, res) => {
-  res.json({
-    username: req.user,
-    logout: "http://localhost:3000/logout",
-  });
+app.get("/", verifyToken, async (req, res) => {
+  console.log(req.user);
+  if (req.user) {
+    res.json({
+      username: req.user,
+      logout: "http://localhost:3000/logout",
+    });
+  }
 });
 
 app.get("/logout", (req, res) => {
@@ -25,34 +28,34 @@ app.get("/logout", (req, res) => {
 });
 
 app.post("/api/login", async (req, res) => {
-  const { username, password } = req.body;
-  try {
-    const response = await axios.post(
-      `${process.env.API_URL}oauth/token`,
-      {
-        grant_type: "http://auth0.com/oauth/grant-type/password-realm",
-        audience: process.env.AUDIENCE_URL,
-        client_id: process.env.CLIENT_ID,
-        client_secret: process.env.CLIENT_SECRET,
-        scope: "offline_access",
-        realm: "Username-Password-Authentication",
-        username: username,
-        password: password,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+  const { code } = req.body;
+  console.log(code);
+  if (code) {
+    try {
+      const response = await axios.post(
+        `${process.env.API_URL}oauth/token`,
+        {
+          grant_type: "authorization_code",
+          audience: process.env.AUDIENCE_URL,
+          client_id: process.env.CLIENT_ID,
+          client_secret: process.env.CLIENT_SECRET,
+          code: code,
+          redirect_uri: "http://localhost:3000/",
         },
-      }
-    );
-    res.status(201).json({
-      access_token: response.data.access_token,
-      username: username,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(401).json({ error: error.response?.data });
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+      res.json({
+        access_token: response.data.access_token,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(401).json({ error: error.response?.data });
+    }
   }
 });
 
